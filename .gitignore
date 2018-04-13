@@ -1,0 +1,11 @@
+.idea
+target
+AddClients.txt
+ReadMe.txt
+src/main/java/com/turchenkov/dao/ReadFromFile.java
+src/main/java/com/turchenkov/dao/WriteInFile.java
+src/main/java/com/turchenkov/servlets/AddClient.java
+src/main/java/com/turchenkov/servlets/ShowClient.java
+src/main/webapp/addClient.html
+src/main/webapp/pageTwo.html
+src/main/webapp/printout.jsp

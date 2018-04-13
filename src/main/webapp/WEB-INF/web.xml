@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <!--<servlet>-->
+        <!--<servlet-name>ShowClient</servlet-name>-->
+        <!--<servlet-class>com.turchenkov.servlets.ShowClient</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>ShowClient</servlet-name>-->
+        <!--<url-pattern>/showClient</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+    <!--<servlet>-->
+        <!--<servlet-name>AddClient</servlet-name>-->
+        <!--<servlet-class>com.turchenkov.servlets.AddClient</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>AddClient</servlet-name>-->
+        <!--<url-pattern>/addClient</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+    <servlet>
+        <servlet-name>createClientServlet</servlet-name>
+        <servlet-class>com.turchenkov.servlets.refactoring.CreateClientServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createClientServlet</servlet-name>
+        <url-pattern>/client</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>showClientServlet</servlet-name>
+        <servlet-class>com.turchenkov.servlets.refactoring.ShowClientServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showClientServlet</servlet-name>
+        <url-pattern>/clients</url-pattern>
+    </servlet-mapping>
+</web-app>
