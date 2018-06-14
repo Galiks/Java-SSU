@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список операций</title>
+</head>
+<body>
+<div>
+    <br>
+
+    <div>
+        <div>
+            <form action="#" th:action="@{${clientID == 'all' ? '/adminHome' : '/home/' + clientID}}" method="get">
+                <button type="button"></button>
+            </form>
+        </div>
+        <div>
+            <form action="#" th:action="@{/login}" method="get">
+                <button type="button"></button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <form action="#" th:action="@{|/client/${clientID}/operations|}" th:object="${rollback}" method="post">
+        <table border="1">
+            <tr>
+                <th/>
+                <th>Счёт отправления</th>
+                <th>Счёт получения</th>
+                <th>Сумма</th>
+                <th>Отменена</th>
+            </tr>
+            <tr th:each="operation : ${operations}" th:action="@{/registration}">
+                <td><input type="radio" th:field="*{operationID}" th:value="${operation.id}"/></td>
+                <td th:text="${operation.sender.accountNumber}"/>
+                <td th:text="${operation.receiver.accountNumber}"/>
+                <td th:text="${operation.money}"/>
+                <td><input type="checkbox" th:checked="${operation.reverse}" disabled="true"/></td>
+            </tr>
+        </table>
+
+        <br/>
+        <button type="submit" th:classappend="${admin} ? 'w3-show' : 'w3-hide'">Отменить операцию</button>
+    </form>
+
+    <form action="#" th:action="@{|/client/${clientID}/newOperation|}" method="get">
+        <button type="submit" th:classappend="${admin} ? 'w3-hide' : 'w3-show'">Добавить операцию</button>
+    </form>
+</div>
+</body>
+</html>

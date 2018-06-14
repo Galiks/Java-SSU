@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Вход в систему</title>
+</head>
+<body>
+<div>
+    <br>
+
+    <div>
+        <div>
+            <form action="#">
+                <button type="button"></button>
+            </form>
+        </div>
+        <div>
+            <form action="#">
+                <button type="button"></button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div>
+        <h2>Введите свои данные</h2>
+    </div>
+
+    <form action="#" th:action="@{/login}" th:object="${client}" method="post">
+        <p><label>Логин</label><input type="text" th:field="*{login}"/></p>
+        <p><label>Пароль</label><input type="password" th:field="*{password}"/></p>
+        <br>
+        <p><button type="submit">Войти</button></p>
+    </form>
+
+    <form action="#" th:action="@{/registration}" method="get">
+        <p><button type="submit">Зарегистрироваться</button></p>
+    </form>
+</div>
+</body>
+</html>

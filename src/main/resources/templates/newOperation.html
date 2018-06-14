@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление операции</title>
+</head>
+<body>
+<div>
+    <br>
+
+    <div>
+        <div>
+            <form action="#" th:action="@{|/home/${client.id}|}" method="get">
+                <button type="button"></button>
+            </form>
+        </div>
+        <div>
+            <form action="#" th:action="@{/login}" method="get">
+                <button type="button"></button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div>
+        <h2>Введите данные об операции</h2>
+    </div>
+
+    <form action="#" th:action="@{|/client/${client.id}/newOperation|}" th:object="${operation}" method="post">
+        <p><label>Счёт отправления</label>
+            <select th:field="*{fromAccountID}">
+                <option th:each="account : ${client.account}"
+                        th:value="${account.id}"
+                        th:utext="${account.accountNumber}"/>
+            </select>
+        </p>
+        <p><label>Счёт получения</label>
+            <select th:field="*{toAccountID}">
+                <option th:each="account : ${accounts}"
+                        th:value="${account.id}"
+                        th:utext="${account.accountNumber}"/>
+            </select>
+        </p>
+        <p><label>Сумма</label><input type="number" th:field="*{money}"/></p>
+        <p><button type="submit">Добавить</button></p>
+    </form>
+</div>
+</body>
+</html>

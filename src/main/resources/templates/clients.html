@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователей</title>
+</head>
+<body>
+<div>
+    <br>
+    <div>
+        <div>
+            <form action="#" th:action="@{/adminHome}" method="get">
+                <button type="button"></button>
+            </form>
+        </div>
+        <div>
+            <form action="#" th:action="@{/login}" method="get">
+                <button type="button"></button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <form action="#" th:action="@{/clients}" th:object="${clientDto}" method="post">
+        <table border="1">
+            <tr>
+                <th/>
+                <th>Логин</th>
+                <th>Администратор</th>
+            </tr>
+            <tr th:each="user : ${clients}" th:action="@{/registration}">
+                <td><input type="radio" th:field="*{clientID}" th:value="${client.id}"/></td>
+                <td th:text="${client.login}"/>
+                <td><input type="checkbox" th:checked="${client.admin}" disabled="true"/></td>
+            </tr>
+        </table>
+
+        <br>
+        <button type="submit" name="action" value="remove">Удалить пользователя</button>
+
+        <br>
+        <br>
+        <button type="submit" name="action" value="edit">Редактировать пользователя</button>
+
+        <br>
+        <br>
+        <button type="submit" name="action" value="show">Посмотреть пользователя</button>
+    </form>
+
+    <br>
+    <form action="#" th:action="@{/newClient}" method="get">
+        <button type="submit">Добавить пользователя</button>
+    </form>
+</div>
+</body>
+</html>
