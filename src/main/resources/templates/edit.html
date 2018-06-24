@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Правка отчёта</title>
+</head>
+<body>
+<!DOCTYPE html>
 <html lang="en,ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +18,7 @@
 </head>
 <body>
 <!--<form class="form-horizontal" th:action="@{/report}" th:object="${report}" action='' method="post">-->
-<form class="form-horizontal" action="#" th:action="@{/report}" th:object="${report}" method="post">
+<form class="form-horizontal" action="#" th:action="@{/edit/${id}}" th:object="${report}" method="post">
     <fieldset>
         <div id="legend">
             <legend class="text">New Report</legend>
@@ -67,10 +74,11 @@
 
         <div class="control-group">
             <div class="controls">
-                <button type="submit" class="btn btn-success" th:action="@{|/reports}" >Сохранить</button>
+                <button type="submit" class="btn btn-success" th:action="@{/reports}" >Сохранить</button>
             </div>
         </div>
     </fieldset>
 </form>
+
 </body>
 </html>

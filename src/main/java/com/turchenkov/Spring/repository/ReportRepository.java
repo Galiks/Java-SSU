@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface ReportRepository extends JpaRepository<Report, Long> {
 
@@ -26,5 +28,7 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
     @Query("SELECT COUNT(r.prepayment) FROM Report as r")
     int countByPrepayment();
 
-    Report findByNumber(int number);
+    Optional<Report> findByNumber(int number);
+
+    void deleteById(Long id);
 }
