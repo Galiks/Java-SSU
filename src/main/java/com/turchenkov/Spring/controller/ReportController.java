@@ -9,7 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -21,24 +24,6 @@ public class ReportController {
     @Autowired
     private ReportRepository reportRepository;
 
-    //<editor-fold desc="main">
-    private String reportInfo(Model model, Report report) {
-        model.addAttribute("report", report);
-        model.addAttribute("reportID", report.getId());
-        return "report";
-    }
-
-//    @GetMapping("/report")
-//    public String reportGet(Model model) {
-//
-//        return reportInfo(model, new Report());
-//    }
-
-//    @PostMapping("/report/{reportID}")
-//    public String reportPost(@ModelAttribute Report report, @PathVariable("reportID") String reportID) {
-//        reportRepository.saveAndFlush(report);
-//        return "redirect:/reports";
-//    }
 
     @GetMapping("/report")
     public String reportGet(Model model){
@@ -53,7 +38,6 @@ public class ReportController {
 
         return "redirect:/reports";
     }
-
 
     @GetMapping("/reports")
     public String allReportsGet(Model model) {
@@ -77,26 +61,46 @@ public class ReportController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editGet(Model model, @PathVariable("id") String id) {
-        return reportInfo(model.addAttribute(id), reportRepository.findById(Long.parseLong(id)).get());
+    public String editGet(Model model, @PathVariable("id") String id){
+        model.addAttribute(reportRepository.findById(Long.parseLong(id)).get());
+
+        return "edit";
     }
 
     @PostMapping("/edit/{id}")
-    public String editPost(@ModelAttribute Report report, @PathVariable("id") String id) {
+    public String editPost(@ModelAttribute Report report, @PathVariable("id") String id,
+                           @RequestParam String date,
+                           @RequestParam String number,
+                           @RequestParam String cost,
+                           @RequestParam String prepayment,
+                           @RequestParam String payment,
+                           @RequestParam String consumption,
+                           @RequestParam String description){
         report.setId(Long.parseLong(id));
+        report.setDate(date);
+        report.setNumber(Integer.parseInt(number));
+        report.setCost(Integer.parseInt(cost));
+        report.setPrepayment(Integer.parseInt(prepayment));
+        report.setPayment(Integer.parseInt(payment));
+        report.setConsumption(Integer.parseInt(consumption));
+        report.setDescription(description);
+
         reportRepository.save(report);
+
         return "redirect:/reports";
     }
 
-//    @GetMapping("/delete")
-//    public String deleteGet(@PathVariable("reportID") String reportID) {
-//        return "delete";
-//    }
-//
-//    @PostMapping("/delete")
-//    public String deletePost(@ModelAttribute Report report){
-//        reportRepository.delete(reportRepository.findById(report.getId()).get());
-//        return "redirect:/reports";
-//    }
-    //</editor-fold>
+    @GetMapping("/delete/{id}")
+    public String deleteGet(Model model, @PathVariable("id") String id){
+        model.addAttribute(reportRepository.findById(Long.parseLong(id)).get());
+
+        return "delete";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deletePost(@ModelAttribute Report report, @PathVariable("id") Long id){
+        reportRepository.delete(report);
+
+        return "redirect:/reports";
+    }
 }

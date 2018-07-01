@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en,ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Удаление данных</title>
@@ -7,7 +7,12 @@
 <body>
     <p>Вы уверены в том, что хотите удалить данные?</p>
 
-    <form action="/delete" method="post"><button type="submit">ДА</button></form>
-    <form action="/reports"><button type="button">НЕТ</button></form>
+    <form th:action="@{|/delete/${id}|}" th:object="${user}" method="post">
+        <button type="submit" th:action="@{/users}">Да</button>
+    </form>
+
+    <form th:action="@{/users}" method="post">
+        <button type="submit" th:action="@{/users}">Нет</button>
+    </form>
 </body>
 </html>
