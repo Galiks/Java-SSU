@@ -8,11 +8,11 @@
     <p>Вы уверены в том, что хотите удалить данные?</p>
 
     <form th:action="@{|/delete/${id}|}" th:object="${user}" method="post">
-        <button type="submit" th:action="@{/users}">Да</button>
+        <button type="submit" th:action="@{/reports}">Да</button>
     </form>
 
-    <form th:action="@{/users}" method="post">
-        <button type="submit" th:action="@{/users}">Нет</button>
+    <form th:action="@{/reports}" method="post">
+        <button type="submit" th:action="@{/reports}">Нет</button>
     </form>
 </body>
 </html>
