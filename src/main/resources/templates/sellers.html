@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en,ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="span5">
+            <table class="table table-striped table-condensed table-bordered">
+                <tbody>
+                <tr>
+                    <th>Номер заказа</th>
+                    <th>Дата</th>
+                    <th>Номер товарного чека</th>
+                    <th>Сумма заказа</th>
+                    <th>Оплата при оформлении</th>
+                    <th>Оплата при получении</th>
+                    <th>Расход</th>
+                    <th>Примечание</th>
+                    <th></th>
+                </tr>
+                <tr th:each="report : ${reports}" th:action="@{/report}">
+                    <td th:text="${report.id}"></td>
+                    <td th:text="${report.date}"></td>
+                    <td th:text="${report.number}"></td>
+                    <td th:text="${report.cost}"></td>
+                    <td th:text="${report.prepayment}"></td>
+                    <td th:text="${report.payment}"></td>
+                    <td th:text="${report.consumption}"></td>
+                    <td th:text="${report.description}"></td>
+
+                    <td>
+                        <div class="btn-group" role="group">
+                            <form action="#" th:action="@{|/edit/${report.id}|}" method="get">
+                                <button type="submit" class="btn btn-primary center-block">Править отчёт</button>
+                            </form>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <form action="#" th:action="@{|/delete/${report.id}|}" method="get">
+                                <button type="submit" class="btn btn-primary center-block">Удалить отчёт</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container centered-top center-block">
+    <div class="btn-group" role="group">
+        <form action="#" th:action="@{/report}" method="get">
+            <button type="submit" class="btn btn-primary center-block">Новый отчёт</button>
+        </form>
+    </div>
+    <div class="btn-group" role="group">
+        <form action="#" th:action="@{/balance}" method="get">
+            <button type="submit" class="btn btn-primary center-block">Текущий остаток</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -12,43 +12,7 @@
 </head>
 <body>
 
-<!--&lt;!&ndash;<editor-fold desc="Old">&ndash;&gt;-->
-<!--<div class="container">-->
-    <!--<form action="#" method="post">-->
-        <!--<div class="row">-->
-            <!--<div class="span5">-->
-                <!--<table class="table table-striped table-condensed">-->
-                    <!--<tbody>-->
-                    <!--<tr>-->
-                        <!--<th>Номер заказа</th>-->
-                        <!--<th>Дата</th>-->
-                        <!--<th>Номер товарного чека</th>-->
-                        <!--<th>Сумма заказа</th>-->
-                        <!--<th>Оплата при оформлении</th>-->
-                        <!--<th>Оплата при получении</th>-->
-                        <!--<th>Расход</th>-->
-                        <!--<th>Примечание</th>-->
-                    <!--</tr>-->
-                    <!--<tr th:each="report : ${reports}" th:action="@{/report}">-->
-                        <!--<td th:text="${report.id}"/>-->
-                        <!--<td th:text="${report.date}"/>-->
-                        <!--<td th:text="${report.number}"/>-->
-                        <!--<td th:text="${report.cost}"/>-->
-                        <!--<td th:text="${report.prepayment}"/>-->
-                        <!--<td th:text="${report.payment}"/>-->
-                        <!--<td th:text="${report.consumption}"/>-->
-                        <!--<td th:text="${report.description}"/>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                <!--</table>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</form>-->
-<!--</div>-->
-<!--&lt;!&ndash;</editor-fold>&ndash;&gt;-->
-
 <div class="container">
-    <!--<form action="#" th:action="@{/reports}" th:object="${reportDto}" method="post">-->
         <div class="row">
             <div class="span5">
                 <table class="table table-striped table-condensed table-bordered">
@@ -73,7 +37,7 @@
                         <td th:text="${report.payment}"></td>
                         <td th:text="${report.consumption}"></td>
                         <td th:text="${report.description}"></td>
-                        <!--<td><input type="radio" th:field="*{id}" th:value="${report.id}" class="w3-radio"/></td>-->
+
                         <td>
                             <div class="btn-group" role="group">
                                 <form action="#" th:action="@{|/edit/${report.id}|}" method="get">
@@ -91,7 +55,6 @@
                 </table>
             </div>
         </div>
-    <!--</form>-->
 </div>
 
 <div class="container centered-top center-block">
@@ -105,16 +68,6 @@
             <button type="submit" class="btn btn-primary center-block">Текущий остаток</button>
         </form>
     </div>
-    <!--<div class="btn-group" role="group">-->
-        <!--<form action="#" th:action="@{/edit/${id}}" method="get">-->
-            <!--<button type="submit" class="btn btn-primary center-block">Править отчёт</button>-->
-        <!--</form>-->
-    <!--</div>-->
-    <!--<div class="btn-group" role="group">-->
-        <!--<form action="#" th:action="@{/reports}" method="get">-->
-            <!--<button type="submit" class="btn btn-primary center-block">Удалить отчёт</button>-->
-        <!--</form>-->
-    <!--</div>-->
 </div>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--<bean id="a" class="model.A">-->
+        <!--<property name="title" value="Bean A"/>-->
+    <!--</bean>-->
+
+    <bean id="bubble" class="com.turchenkov.Spring.SecondTask.classForSort.BubbleSort"/>
+
+    <!--<bean id="b" class="model.B">-->
+        <!--<constructor-arg ref="a"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="c" class="model.C">-->
+        <!--<lookup-method name="createD" bean="d"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="d" class="model.D" scope="prototype"/>-->
+
+    <!--<bean id="report" class="model.Report">-->
+        <!--<lookup-method name="createSeller" bean="seller"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="seller" class="model.Seller" scope="prototype"/>-->
+
+    <!--<bean id="e" class="model.E">-->
+        <!--<replaced-method name="sayBye" replacer="methodReplacerImpl"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="f" class="model.F"/>-->
+
+    <!--<bean id="methodReplacerImpl" class="model.MethodReplacerImpl"/>-->
+
+
+</beans>
